@@ -22,6 +22,17 @@ What install does:
 
 Nothing is deleted. `settings.json`, sessions, auth, and memory are never touched.
 
+## Only using Claude Code?
+
+Then this repo is built for you first. Everything under `claude/` is native Claude Code: agents, hooks, skills, statusline, settings. The installer skips the OMP and Codex steps when those tools are not installed. You get:
+
+- the shared rules in `~/.claude/CLAUDE.md` (via `@` import) plus your own `~/CLAUDE.private.md`
+- `scout` / `implementer` / `reviewer` subagents for the orchestrator loop
+- hooks that scan staged diffs for secrets and debug junk, refuse config-weakening edits, and log tool activity
+- twelve skills, invoked with `/skill-name` or by asking
+
+`dcg` is optional; the hook is a no-op when it is not installed.
+
 ## Requirements
 
 - `trash` (macOS ships it; `brew install trash` elsewhere). The rules ban `rm`.
@@ -97,3 +108,11 @@ Third-party skill packs are not vendored. If you want the `pstack` collection, i
 ## Contributing back
 
 Keep the core harness-neutral and person-neutral. The pre-commit gate refuses absolute home paths (`/Users/<name>/`, `/home/<name>/`) so paths must be written with `~`. Add a log entry for anything you change.
+
+## Sending this to a friend
+
+Paste this:
+
+> Rules, agents, hooks, and skills I use with Claude Code (and OMP/Codex if you have them). Clone it and run the installer; it symlinks into `~/.claude`, backs up anything it replaces, and never touches your settings or sessions. Your own preferences go in `~/CLAUDE.private.md`, which stays out of the repo. Start with `README.md`, then `CLAUDE.md`.
+>
+> `git clone <url> ~/harness && ~/harness/install.sh`
