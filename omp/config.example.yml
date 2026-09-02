@@ -1,0 +1,17 @@
+# ~/.omp/agent/config.yml — example. Copy, then set models you have credentials for.
+# List available ids with `omp models`. Effort suffixes: :low :medium :high :max (provider-dependent).
+symbolPreset: unicode
+setupVersion: 2
+modelRoles:
+  default: anthropic/claude-opus-5:high        # orchestrator: plans, decides, synthesizes
+  task: anthropic/claude-opus-5:medium         # implementer lane (task tool)
+  reviewer: openai-codex/gpt-5.6-luna:max      # fresh-context review; keep on a different family than task
+  advisor: openai-codex/gpt-5.6-luna:xhigh     # background watchdog (optional; needs advisor.enabled)
+  smol: deepseek/deepseek-v4-flash:max         # /btw side questions, cheap steps
+defaultThinkingLevel: auto
+personality: friendly
+steeringMode: one-at-a-time
+autolearn:
+  enabled: true
+statusLine:
+  contextLine: annotated

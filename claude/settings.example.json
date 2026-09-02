@@ -1,0 +1,41 @@
+{
+  "permissions": {
+    "defaultMode": "auto"
+  },
+  "includeCoAuthoredBy": false,
+  "statusLine": {
+    "type": "command",
+    "command": "bash ~/.claude/statusline.sh"
+  },
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          { "type": "command", "command": "~/.claude/hooks/commit-quality.sh" },
+          { "type": "command", "command": "dcg" }
+        ]
+      },
+      {
+        "matcher": "Edit|Write",
+        "hooks": [
+          { "type": "command", "command": "~/.claude/hooks/config-protection.sh" }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "",
+        "hooks": [
+          { "type": "command", "command": "~/.claude/hooks/learning-logger.sh" }
+        ]
+      }
+    ],
+    "Notification": [
+      { "hooks": [ { "type": "command", "command": "afplay /System/Library/Sounds/Tink.aiff &" } ] }
+    ],
+    "Stop": [
+      { "hooks": [ { "type": "command", "command": "afplay /System/Library/Sounds/Purr.aiff &" } ] }
+    ]
+  }
+}
