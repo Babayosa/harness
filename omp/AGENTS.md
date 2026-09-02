@@ -3,7 +3,7 @@
 The shared rules name tools from other harnesses. Honor the intent with OMP equivalents:
 
 - **Teach mode** (if you import `modules/teach-mode.md`) is Claude Code only. In OMP, do NOT run teach mode by default: no checklists, quizzes, restatements, or running teaching docs. It activates only on `/teach` or the `teach` skill.
-- **Subagents**: the Codex rule "do not spawn subagents unless explicitly asked" is superseded in OMP. Delegation via the `task` tool is the harness default for decomposable/parallel work. The orchestrator loop maps to OMP agents: `scout` → `scout`, `implementer` → `task`, `reviewer` → `reviewer`.
+- **Subagents**: delegation via the `task` tool is the harness default for decomposable/parallel work. The orchestrator loop maps to OMP agents: `scout` → `scout`, `implementer` → `task`, `reviewer` → `reviewer`.
 - **AskUserQuestion** → the `ask` tool.
 - **Skill tool / Read SKILL.md** → read `skill://<name>`.
 - **`/clear` at phase boundaries** → start a fresh OMP session; state still lives in `tasks/todo.md`.
